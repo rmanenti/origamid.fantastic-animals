@@ -1,29 +1,43 @@
 import * as Configuration from './configuration.js';
 
-export default function modal() {
+export default class Modal {
 
-    const buttonOpen = document.querySelector( '[data-ui-action="open-modal"]' ),
-          buttonClose = document.querySelector( '[data-ui-action="close-modal"]' ),
+  constructor( modal, btnOpen, btnClose ) {
 
-          modalContainer = document.querySelector( '[data-ui-component="modal"]' );
+    this.container = document.querySelector( modal );
+    this.btnOpen   = document.querySelector( btnOpen );
+    this.btnClose  = document.querySelector( btnClose );
+  }
 
-    if ( modalContainer ) {
+  initialize() {
 
-        function state( e ) {
-            
-            e.preventDefault();
-            modalContainer.classList.toggle( Configuration.classActive );
-        }
+    this.bindings();
 
-        function out( e ) {
-            
-            if ( e.target === this ) {
-                state( e );
-            }
-        }
+    if ( this.container && this.btnOpen && this.btnClose ) {
 
-        buttonOpen.addEventListener( 'click', state );
-        buttonClose.addEventListener( 'click', state );
-        modalContainer.addEventListener( 'click', out );
-    }    
+      this.btnOpen.addEventListener( 'click', this.state );
+      this.btnClose.addEventListener( 'click', this.state );
+      this.container.addEventListener( 'click', this.out );
+    }
+
+    return this;
+  }
+
+  state( e ) {
+
+    e.preventDefault();
+    this.container.classList.toggle( Configuration.classActive );
+  }
+
+  out( e ) {
+
+    if ( e.target === this.container ) {
+      this.state( e );
+    }
+  }
+
+  bindings() {
+    this.state = this.state.bind( this );
+    this.out   = this.out.bind( this );
+  }
 }
