@@ -27,7 +27,7 @@ export default class Accordion {
   }
 
   toggle( item ) {
-    
+
     const description = item.nextElementSibling;
 
     item.classList.toggle( Configuration.classActive );
