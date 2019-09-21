@@ -1,35 +1,45 @@
-export default function smoothScroll() {
+export default class SmoothScroll {
 
-    if ( document.querySelector( '[data-ui-component="scroll-menu"]' ) ) {
+  constructor( reference, options ) {
+    
+    this.items = document.querySelectorAll( reference );
 
-        const uiScrollMenu      = document.querySelector( '[data-ui-component="scroll-menu"]' ),
-            uiScrollMenuItems = uiScrollMenu.querySelectorAll( 'a[href^="#"]' );
+    if ( options === undefined ) {
 
-        function scrollMenuTo( e ) {
-
-            e.preventDefault();
-
-            let item    = e.currentTarget,
-                ref     = item.getAttribute( 'href' ),
-                section = document.querySelector( ref ),
-                top     = section.offsetTop;
-
-            /*
-            window.scrollTo( {
-                left: 0,
-                top: top,
-                behavior: "smooth"
-            } );
-            */
-
-            section.scrollIntoView( {
-                behavior : 'smooth',
-                block : 'start'
-            } );
-        }
-
-        uiScrollMenuItems.forEach( ( item ) => {
-            item.addEventListener( 'click', scrollMenuTo );
-        } );
+      this.options = {
+        behavior: 'smooth',
+        block: 'start',
+      };
+    } else {
+      this.options = options;
     }
+  }
+
+  initialize() {
+
+    this.bindings();
+
+    if ( this.items.length ) {
+
+      this.items.forEach( ( item ) => {
+        item.addEventListener( 'click', this.scroll );
+      } );
+    }
+    return this;
+  }
+
+  scroll( e ) {
+
+    e.preventDefault();
+
+    const item    = e.currentTarget;
+    const ref     = item.getAttribute( 'href' );
+    const section = document.querySelector( ref );
+
+    section.scrollIntoView( this.options );
+  }
+
+  bindings() {
+    this.scroll = this.scroll.bind( this );
+  }
 }

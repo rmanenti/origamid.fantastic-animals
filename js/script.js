@@ -1,6 +1,4 @@
-import * as Configuration   from './modules/configuration.js';
-import * as Events          from './modules/events.js';
-import      smoothScroll    from './modules/smooth-scroll.js';
+import      SmoothScroll    from './modules/smooth-scroll.js';
 import      highlightScroll from './modules/highlight-scroll.js';
 import      tab             from './modules/tab.js';
 import      accordion       from './modules/accordion.js';
@@ -14,7 +12,6 @@ import      fetchBitcoin    from './modules/fetch-bitcoin.js';
 
 tab();
 accordion();
-smoothScroll();
 highlightScroll();
 modal();
 tooltip();
@@ -23,3 +20,6 @@ mobileMenu();
 openingHours();
 fetchAnimals();
 fetchBitcoin();
+
+const smoothScroll = new SmoothScroll( '[data-ui-component="scroll-menu"] a[href^="#"]' );
+smoothScroll.initialize();
