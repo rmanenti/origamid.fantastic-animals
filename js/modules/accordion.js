@@ -22,6 +22,8 @@ export default class Accordion {
         } );
       } );
     }
+
+    return this;
   }
 
   toggle( item ) {

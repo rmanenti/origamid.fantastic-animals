@@ -33,6 +33,8 @@ export default class Tab {
         }
       } );
     }
+
+    return this;
   }
 
   activate( index ) {
