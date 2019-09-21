@@ -1,0 +1,25 @@
+import * as Configuration   from './modules/configuration.js';
+import * as Events          from './modules/events.js';
+import      smoothScroll    from './modules/smooth-scroll.js';
+import      highlightScroll from './modules/highlight-scroll.js';
+import      tab             from './modules/tab.js';
+import      accordion       from './modules/accordion.js';
+import      modal           from './modules/modal.js';
+import      tooltip         from './modules/tooltip.js';
+import      dropdownMenu    from './modules/dropdown-menu.js';
+import      mobileMenu      from './modules/mobile-menu.js';
+import      openingHours    from './modules/opening-hours.js';
+import      fetchAnimals    from './modules/fetch-animals.js';
+import      fetchBitcoin    from './modules/fetch-bitcoin.js';
+
+tab();
+accordion();
+smoothScroll();
+highlightScroll();
+modal();
+tooltip();
+dropdownMenu();
+mobileMenu();
+openingHours();
+fetchAnimals();
+fetchBitcoin();

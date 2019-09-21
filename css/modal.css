@@ -1,0 +1,82 @@
+.modal-container {
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+    background: rgba( 0, 0, 0, .5 );
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.modal-container.ativo {
+    display: flex;
+}
+
+.ativo .modal {
+    animation: modal .3s forwards;
+}
+
+.modal {
+
+    min-width: 300px;
+
+    background: #ffffff;
+    border: 10px solid #fb5;
+    box-shadow: 0 0 0 10px #ffffff;
+    padding: 40px;
+
+    position: relative;
+}
+
+.modal .close {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    background: #e54;
+    box-shadow: 0 4px 4px 0 rgba( 0, 0, 0, .3) ;    
+    color: #ffffff;
+
+    font-size: 1.2rem;    
+
+    cursor: pointer;
+
+    top: -30px;
+    right: -3px;    
+    position: absolute;
+}
+
+.modal form label {
+    font-family: monospace;
+    display: block;
+    font-weight: bold;
+
+    margin: 1rem 0 .5rem 0;
+}
+
+.modal form input {
+
+    width: 100%;
+    padding: .7rem .5rem;
+    box-sizing: border-box;
+}
+
+.modal form button[type="submit"] {
+
+    display: block;
+    background: #e54;
+    border: none;
+    border-radius: 4px;
+    padding: .7rem 2rem;
+    font-size: 1rem;
+    color: #ffffff;
+    font-family: monospace;
+    margin-top: 1rem;
+}

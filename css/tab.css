@@ -1,0 +1,15 @@
+[data-ui-component="tab-content"] section {
+    display: none;
+}
+
+[data-ui-component="tab-content"] section.ativo {
+    display: block;    
+}
+
+[data-ui-component="tab-content"] section.show-right {
+animation: show-right .5s forwards;
+}
+
+[data-ui-component="tab-content"] section.show-down {
+    animation: show-down .5s forwards;
+}

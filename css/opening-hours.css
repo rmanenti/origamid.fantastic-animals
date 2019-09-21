@@ -1,0 +1,19 @@
+[data-ui-component="weekdays"]::after {
+
+    content: '';
+
+    display: inline-block;    
+    width: 8px;
+    height: 8px;
+
+    background: red;
+    border: 2px solid #000000;
+    border-radius: 50%;
+
+    margin-left: 4px;
+}
+
+
+[data-ui-component="weekdays"].aberto::after {    
+    background: greenyellow;
+}

@@ -1,0 +1,17 @@
+[data-ui-component="accordion"] dd {
+    display: none;
+}
+
+[data-ui-component="accordion"] dd.ativo {
+    display: block;
+    animation: slide-down .5s forwards;
+}
+
+[data-ui-component="accordion"] dt::after {
+    content: "⮧";
+    margin-left: 10px;
+}
+
+[data-ui-component="accordion"] dt.ativo::after {
+    content: "⮤";
+}

@@ -1,0 +1,43 @@
+@media (max-width: 700px) {
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    [data-ui-component="mobile-menu-button"] {
+        display: flex;
+    }
+
+    .menu, .grid-section, .copyright {
+        grid-column: 1;
+    }
+
+    .menu {
+        margin-top: 0;
+    }
+
+    .copyright {
+        margin-bottom: 0;
+    }
+
+    .grid-section {
+        grid-template-columns: 100px 1fr;
+        grid-gap: 10px;
+    }
+
+    .grid-section h1 {
+        font-size: 3rem;
+    }
+
+    .animais-lista {
+        grid-column: 1;
+    }
+
+    .grid-numbers {
+        grid-column: 1;
+    }    
+
+    .faq-lista, .dados, .mapa {
+        grid-column: 1 / 3;
+    }
+}
