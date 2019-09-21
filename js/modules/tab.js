@@ -1,42 +1,47 @@
 import * as Configuration from './configuration.js';
 
-export default function tab() {
+export default class Tab {
 
-    if ( document.querySelector( '[data-ui-component="tab-menu"]' ) ) {
+  constructor( container ) {
 
-        const uiTab        = document.querySelector( '[data-ui-component="tab-menu"]' ),
-            uiTabOptions = uiTab.querySelectorAll( 'li' ), 
-            uiTabContent = document.querySelector( '[data-ui-component="tab-content"]' ),
-            uiTabContentSections = uiTabContent.querySelectorAll( 'section' );
+    this.container = document.querySelector( container );
+  }
 
-        uiTabContentSections[ 0 ].classList.add( Configuration.classActive );
+  initialize() {
 
-        function activate( index ) {
+    if ( this.container !== undefined ) {
 
-            uiTabContentSections.forEach( ( section ) => {
-                section.classList.remove( Configuration.classActive );
-            } );
+      this.tabOptions  = this.container.querySelectorAll( 'li' );
+      this.tabContent  = document.querySelector( '[data-ui-component="tab-content"]' );
+      this.tabSections = this.tabContent.querySelectorAll( 'section' );
+      this.tabSections[ 0 ].classList.add( Configuration.classActive );
 
-            const direction = uiTabContentSections[ index ].dataset.anime;
+      this.tabOptions.forEach( ( option, index ) => {
 
-            uiTabContentSections[ index ].classList.add( Configuration.classActive, direction );
+        option.addEventListener( 'click', ( e ) => {
+          this.activate( index );
+        } );
+      } );
+
+      this.tabSections.forEach( ( section, index ) => {
+
+        if ( index % 2 === 0 ) {
+          section.dataset.anime = 'show-right';
         }
-
-        uiTabOptions.forEach( ( option, index ) => {
-
-            option.addEventListener( 'click', ( e ) => {
-                activate( index );
-            } );
-        } );
-
-        uiTabContentSections.forEach( ( section, index ) => {
-
-            if ( index % 2 === 0 ) {
-                section.dataset.anime = 'show-right';
-            }
-            else {
-                section.dataset.anime = 'show-down';
-            }
-        } );
+        else {
+          section.dataset.anime = 'show-down';
+        }
+      } );
     }
+  }
+
+  activate( index ) {
+
+    this.tabSections.forEach( ( section ) => {
+      section.classList.remove( Configuration.classActive );
+    } );
+
+    const direction = this.tabSections[ index ].dataset.anime;
+    this.tabSections[ index ].classList.add( Configuration.classActive, direction );
+  }
 }

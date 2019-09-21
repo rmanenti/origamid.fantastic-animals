@@ -1,6 +1,6 @@
 import      SmoothScroll    from './modules/smooth-scroll.js';
 import      highlightScroll from './modules/highlight-scroll.js';
-import      tab             from './modules/tab.js';
+import      Tab             from './modules/tab.js';
 import      Accordion       from './modules/accordion.js';
 import      modal           from './modules/modal.js';
 import      tooltip         from './modules/tooltip.js';
@@ -10,7 +10,6 @@ import      openingHours    from './modules/opening-hours.js';
 import      fetchAnimals    from './modules/fetch-animals.js';
 import      fetchBitcoin    from './modules/fetch-bitcoin.js';
 
-tab();
 highlightScroll();
 modal();
 tooltip();
@@ -19,6 +18,9 @@ mobileMenu();
 openingHours();
 fetchAnimals();
 fetchBitcoin();
+
+const tab = new Tab( '[data-ui-component="tab-menu"]' );
+tab.initialize();
 
 const accordion = new Accordion( '[data-ui-component="accordion"]' );
 accordion.initialize();
