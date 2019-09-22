@@ -1,5 +1,5 @@
 import      SmoothScroll    from './modules/smooth-scroll.js';
-import      highlightScroll from './modules/highlight-scroll.js';
+import      ScrollHighlight from './modules/highlight-scroll.js';
 import      Tab             from './modules/tab.js';
 import      Accordion       from './modules/accordion.js';
 import      Modal           from './modules/modal.js';
@@ -10,12 +10,14 @@ import      openingHours    from './modules/opening-hours.js';
 import      fetchAnimals    from './modules/fetch-animals.js';
 import      fetchBitcoin    from './modules/fetch-bitcoin.js';
 
-highlightScroll();
 dropdownMenu();
 mobileMenu();
 openingHours();
 fetchAnimals( '.grid-numbers', './js/api/animals-api.json' );
 fetchBitcoin( '.bitcoin-donation', 'https://blockchain.info/ticker' );
+
+const scrollHighlight = new ScrollHighlight( '[data-ui-component="scroll-highlight"]' );
+scrollHighlight.initialize();
 
 const tooltip = new Tooltip( '[data-ui-component="tooltip"]' );
 tooltip.initialize();

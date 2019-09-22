@@ -55,7 +55,6 @@ export default class Numbers {
   }
 
   observe() {
-    console.log( this.observerTarget );
 
       this.observer = new MutationObserver( this.mutation );
       this.observer.observe( this.observerTarget, { attributes : true } );

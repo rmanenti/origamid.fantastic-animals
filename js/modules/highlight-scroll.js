@@ -1,28 +1,39 @@
 import * as Configuration from './configuration.js';
 
-export default function highlightScroll() {
+export default class ScrollHighlight {
 
-    if ( document.querySelector( '[data-ui-component="scroll-highlight"]' ) ) {
+    constructor( sections ) {
 
-        const uiScrollHighlightItems = document.querySelectorAll( '[data-ui-component="scroll-highlight"]' );
+        this.sections = document.querySelectorAll( sections );
+    }
 
-        function scrollHighlight() {
-            
-            uiScrollHighlightItems.forEach( ( item ) => {
+    initialize() {
 
-                let visible = item.getBoundingClientRect().top - Configuration.windowHalfSize;
+        this.bindings();
 
-                if ( visible < 0 ) {
-                    item.classList.add( Configuration.classActive );
-                }
-                else if ( item.classList.contains( Configuration.classActive )  ) {
-                    item.classList.remove( Configuration.classActive );
-                }
-            } );
+        if ( this.sections.length ) {
+
+            document.addEventListener( 'scroll', this.highlight );
+            this.highlight();
         }
+    }
 
-        document.addEventListener( 'scroll', scrollHighlight );
+    highlight() {
 
-        scrollHighlight();
+        this.sections.forEach( ( item ) => {
+
+            let visible = item.getBoundingClientRect().top - Configuration.windowHalfSize;
+
+            if ( visible < 0 ) {
+                item.classList.add( Configuration.classActive );
+            }
+            else if ( item.classList.contains( Configuration.classActive )  ) {
+                item.classList.remove( Configuration.classActive );
+            }
+        } );
+    }
+
+    bindings() {
+        this.highlight = this.highlight.bind( this );
     }
 }
