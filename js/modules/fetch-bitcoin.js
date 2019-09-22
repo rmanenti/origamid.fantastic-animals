@@ -1,7 +1,7 @@
-export default function fetchBitcoin() {
+export default function fetchBitcoin( target, url ) {
 
-    let wrapper    = document.querySelector( '.bitcoin-donation' ),
-        request = fetch( 'https://blockchain.info/ticker' );
+    let wrapper    = document.querySelector( target ),
+        request = fetch( url );
 
     request.then( response => {
                 return response.json();
