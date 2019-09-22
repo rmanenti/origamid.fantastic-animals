@@ -1,28 +1,53 @@
 import * as Configuration from './configuration.js';
 
-export default function highlightScroll() {
+export default class ScrollHighlight {
 
-    if ( document.querySelector( '[data-ui-component="scroll-highlight"]' ) ) {
+    constructor( sections ) {
 
-        const uiScrollHighlightItems = document.querySelectorAll( '[data-ui-component="scroll-highlight"]' );
+        this.sections = document.querySelectorAll( sections );
+    }
 
-        function scrollHighlight() {
-            
-            uiScrollHighlightItems.forEach( ( item ) => {
+    initialize() {
 
-                let visible = item.getBoundingClientRect().top - Configuration.windowHalfSize;
+        this.bindings();
 
-                if ( visible < 0 ) {
-                    item.classList.add( Configuration.classActive );
-                }
-                else if ( item.classList.contains( Configuration.classActive )  ) {
-                    item.classList.remove( Configuration.classActive );
-                }
-            } );
+        if ( this.sections.length ) {
+
+            this.getDistances();
+
+            document.addEventListener( 'scroll', this.highlight );
+            this.highlight();
         }
+    }
 
-        document.addEventListener( 'scroll', scrollHighlight );
+    getDistances() {
 
-        scrollHighlight();
+        this.distances = [...this.sections].map( ( section ) => {
+            return {
+                element : section,
+                top     : ( section.offsetTop - Configuration.windowHalfSize ),
+            };            
+        } );
+    }
+
+    highlight() {
+
+        this.distances.forEach( ( section ) => {
+
+            if ( window.pageYOffset > section.top ) {
+                section.element.classList.add( Configuration.classActive );
+            }
+            else if ( section.element.classList.contains( Configuration.classActive )  ) {
+                section.element.classList.remove( Configuration.classActive );
+            }
+        } );
+    }
+
+    discard() {
+        window.removeEventListener( this.highlight );
+    }
+
+    bindings() {
+        this.highlight = this.highlight.bind( this );
     }
 }
