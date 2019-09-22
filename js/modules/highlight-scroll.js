@@ -1,4 +1,5 @@
 import * as Configuration from './configuration.js';
+import      Events         from './events.js';
 
 export default class ScrollHighlight {
 
@@ -48,6 +49,6 @@ export default class ScrollHighlight {
     }
 
     bindings() {
-        this.highlight = this.highlight.bind( this );
+        this.highlight = Events.debounce( this.highlight.bind( this ), 100 );
     }
 }
