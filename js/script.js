@@ -14,7 +14,7 @@ highlightScroll();
 dropdownMenu();
 mobileMenu();
 openingHours();
-fetchAnimals();
+fetchAnimals( '.grid-numbers', './js/api/animals-api.json' );
 fetchBitcoin();
 
 const tooltip = new Tooltip( '[data-ui-component="tooltip"]' );
