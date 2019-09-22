@@ -15,7 +15,7 @@ dropdownMenu();
 mobileMenu();
 openingHours();
 fetchAnimals( '.grid-numbers', './js/api/animals-api.json' );
-fetchBitcoin();
+fetchBitcoin( '.bitcoin-donation', 'https://blockchain.info/ticker' );
 
 const tooltip = new Tooltip( '[data-ui-component="tooltip"]' );
 tooltip.initialize();
