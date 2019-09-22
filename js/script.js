@@ -5,18 +5,21 @@ import      Accordion       from './modules/accordion.js';
 import      Modal           from './modules/modal.js';
 import      Tooltip         from './modules/tooltip.js';
 import      DropdownMenu    from './modules/dropdown-menu.js';
-import      mobileMenu      from './modules/mobile-menu.js';
+import      MobileMenu      from './modules/mobile-menu.js';
 import      openingHours    from './modules/opening-hours.js';
 import      fetchAnimals    from './modules/fetch-animals.js';
 import      fetchBitcoin    from './modules/fetch-bitcoin.js';
 
-mobileMenu();
+
 openingHours();
 fetchAnimals( '.grid-numbers', './js/api/animals-api.json' );
 fetchBitcoin( '.bitcoin-donation', 'https://blockchain.info/ticker' );
 
 const dropdownMenu = new DropdownMenu( '[data-ui-component="dropdown-menu"]' );
 dropdownMenu.initialize();
+
+const mobileMenu = new MobileMenu( '[data-ui-component="mobile-menu-button"]', '[data-ui-component="mobile-menu-list"]' );
+mobileMenu.initialize();
 
 const scrollHighlight = new ScrollHighlight( '[data-ui-component="scroll-highlight"]' );
 scrollHighlight.initialize();
