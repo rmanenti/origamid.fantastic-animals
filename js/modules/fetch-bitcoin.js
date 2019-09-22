@@ -1,5 +1,9 @@
 export default function fetchBitcoin( target, url ) {
 
+    if ( !url.startsWith( 'https' ) ) {
+        return;
+    }
+
     let wrapper    = document.querySelector( target ),
         request = fetch( url );
 
