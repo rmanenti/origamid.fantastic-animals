@@ -13,24 +13,38 @@ export default class ScrollHighlight {
 
         if ( this.sections.length ) {
 
+            this.getDistances();
+
             document.addEventListener( 'scroll', this.highlight );
             this.highlight();
         }
     }
 
+    getDistances() {
+
+        this.distances = [...this.sections].map( ( section ) => {
+            return {
+                element : section,
+                top     : ( section.offsetTop - Configuration.windowHalfSize ),
+            };            
+        } );
+    }
+
     highlight() {
 
-        this.sections.forEach( ( item ) => {
+        this.distances.forEach( ( section ) => {
 
-            let visible = item.getBoundingClientRect().top - Configuration.windowHalfSize;
-
-            if ( visible < 0 ) {
-                item.classList.add( Configuration.classActive );
+            if ( window.pageYOffset > section.top ) {
+                section.element.classList.add( Configuration.classActive );
             }
-            else if ( item.classList.contains( Configuration.classActive )  ) {
-                item.classList.remove( Configuration.classActive );
+            else if ( section.element.classList.contains( Configuration.classActive )  ) {
+                section.element.classList.remove( Configuration.classActive );
             }
         } );
+    }
+
+    discard() {
+        window.removeEventListener( this.highlight );
     }
 
     bindings() {
