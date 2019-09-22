@@ -1,4 +1,4 @@
-import      numbers         from './numbers.js';
+import      Numbers         from './numbers.js';
 
 export default function fetchAnimals() {
 
@@ -33,7 +33,8 @@ export default function fetchAnimals() {
             create( animal );
           } );
 
-          numbers();
+          const n = new Numbers( '[data-ui-component="numbers"]', '.animal-numbers-span' );
+          n.initialize();
       } );
 
     function create( animal ) {
