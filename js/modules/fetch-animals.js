@@ -1,8 +1,8 @@
 import      Numbers         from './numbers.js';
 
-export default function fetchAnimals() {
+export default function fetchAnimals( target, url ) {
 
-  const wrapper    = document.querySelector( '.grid-numbers' );
+  const wrapper    = document.querySelector( target );
   const structure  = {
     element  : 'div',
     class  : 'animal-numbers',
@@ -22,7 +22,7 @@ export default function fetchAnimals() {
                 }
             ]
         };
-    const request = fetch( './js/api/animals-api.json' );
+    const request = fetch( url );
 
     request.then( ( response ) => {
           return response.json();
