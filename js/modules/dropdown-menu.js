@@ -1,26 +1,49 @@
 import * as Configuration from './configuration.js';
 import      Events         from './events.js';
 
-export default function dropdownMenu() {
+export default class DropdownMenu {
 
-  const menus  = document.querySelectorAll( '[data-ui-component="dropdown-menu"]' );
-  const events = [ 'touchstart', 'click'];
+  constructor( target, events ) {
 
-  function show( e ) {
+    this.menus   = document.querySelectorAll( target );
+
+    if ( events === undefined ) {
+      this.events = [ 'touchstart', 'click'];
+    }
+    else {
+      this.events = events;
+    }
+  }
+
+  initialize() {
+
+    this.bindings();
+
+    if ( this.menus.length ) {
+
+      this.menus.forEach( ( menu ) => {
+
+        this.events.forEach( ( event ) => {
+          menu.addEventListener( event, this.show );
+        } );
+      } );
+    }
+  }
+
+  show( e ) {
 
     e.preventDefault();
 
-    this.classList.add( Configuration.classActive );
+    const element = e.currentTarget;
 
-    Events.outside( this, events, () => {
-      this.classList.remove( Configuration.classActive );
+    element.classList.add( Configuration.classActive );
+
+    Events.outside( element, this.events, () => {
+      element.classList.remove( Configuration.classActive );
     } );
   }
 
-  menus.forEach( ( menu ) => {
-
-    events.forEach( ( event ) => {
-      menu.addEventListener( event, show );
-    } );
-  } );
+  bindings() {
+    this.show = this.show.bind( this );
+  }
 }
