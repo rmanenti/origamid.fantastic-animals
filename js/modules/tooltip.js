@@ -32,8 +32,6 @@ export default class Tooltip {
 
     this.tooltip.style.top = `${e.pageY + this.options.gap}px`;
 
-    console.log( e.pageX, width, ( e.pageX + width ), window.innerWidth )
-
     if ( ( e.pageX + width ) > window.innerWidth ) {
       this.tooltip.style.left = `${e.pageX - width}px`;
     } else {

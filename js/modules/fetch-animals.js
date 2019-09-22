@@ -33,7 +33,7 @@ export default function fetchAnimals() {
             create( animal );
           } );
 
-          const n = new Numbers( '[data-ui-component="numbers"]', '.animal-numbers-span' );
+          const n = new Numbers( '[data-ui-component="numbers"]', '.numeros' );
           n.initialize();
       } );
 
