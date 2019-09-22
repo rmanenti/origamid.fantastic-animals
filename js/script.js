@@ -6,14 +6,16 @@ import      Modal           from './modules/modal.js';
 import      Tooltip         from './modules/tooltip.js';
 import      DropdownMenu    from './modules/dropdown-menu.js';
 import      MobileMenu      from './modules/mobile-menu.js';
-import      openingHours    from './modules/opening-hours.js';
+import      OpeningHours    from './modules/opening-hours.js';
 import      fetchAnimals    from './modules/fetch-animals.js';
 import      fetchBitcoin    from './modules/fetch-bitcoin.js';
 
 
-openingHours();
 fetchAnimals( '.grid-numbers', './js/api/animals-api.json' );
 fetchBitcoin( '.bitcoin-donation', 'https://blockchain.info/ticker' );
+
+const openingHours = new OpeningHours( '[data-ui-component="weekdays"]' );
+openingHours.initialize();
 
 const dropdownMenu = new DropdownMenu( '[data-ui-component="dropdown-menu"]' );
 dropdownMenu.initialize();
