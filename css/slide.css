@@ -120,7 +120,7 @@ img {
 
 }
 
-nav {
+nav.slide-nav {
     grid-column: 1 / -1;
 
     width: 100%;
@@ -130,7 +130,7 @@ nav {
     justify-content: space-evenly;
 }
 
-nav button {
+nav.slide-nav button {
     
     font-weight: bold;
     justify-content: center;
@@ -149,17 +149,17 @@ nav button {
     transition: box-shadow .4s, color .4s, background-color .4s;
 }
 
-nav button:hover {
+nav.slide-nav button:hover {
 
     background: rgba(255, 136, 0, .75);    
     color: #fff;
 }
 
-nav button:active {
+nav.slide-nav button:active {
     box-shadow: inset 0px 5px 10px -5px rgba(0,0,0,0.75);
 }
 
-nav button:first-child::after {
+nav.slide-nav button:first-child::after {
 
     content: '<';
     font-size: 1.5rem;
@@ -167,7 +167,7 @@ nav button:first-child::after {
     font-weight: 100;
 }
 
-nav button:last-child:after {
+nav.slide-nav button:last-child:after {
 
     content: '>';
     font-size: 1.5rem;

@@ -30,6 +30,9 @@ export default class MobileMenu {
 
     open( e ) {
 
+        //Avoid click event to be triggered right after touch start.
+        e.preventDefault();
+        
         this.button.classList.add( configuration.getClass( 'active' ) );
         this.menu.classList.add( configuration.getClass( 'active' ) );
 

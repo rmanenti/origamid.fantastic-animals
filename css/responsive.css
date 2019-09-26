@@ -8,6 +8,12 @@
         display: flex;
     }
 
+    [data-ui-component="dropdown-menu"] .dropdown-menu { 
+        
+        display: block;
+        animation: show-up .3s forwards;
+    }
+
     .menu, .grid-section, .copyright {
         grid-column: 1;
     }
@@ -35,7 +41,7 @@
 
     .grid-numbers {
         grid-column: 1;
-    }    
+    }
 
     .faq-lista, .dados, .mapa {
         grid-column: 1 / 3;
