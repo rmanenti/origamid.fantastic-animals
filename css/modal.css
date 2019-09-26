@@ -24,11 +24,14 @@
 
 .modal {
 
-    min-width: 300px;
+    width: 80vw;
+    max-width: 600px;
 
     background: #ffffff;
     border: 10px solid #fb5;
     box-shadow: 0 0 0 10px #ffffff;
+    box-sizing: border-box;
+
     padding: 40px;
 
     position: relative;
