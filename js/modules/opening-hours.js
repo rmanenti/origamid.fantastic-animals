@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import configuration from './configuration.js';
 
 export default class OpeningHours {
 
@@ -38,7 +38,7 @@ export default class OpeningHours {
     setState() {
 
         if ( this.isOpen() ) {
-            this.element.classList.add( Configuration.classOpen );
+            this.element.classList.add( configuration.getClass( 'open' ) );
         }
     }
 }

@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import configuration from './configuration.js';
 
 export default class Modal {
 
@@ -26,7 +26,7 @@ export default class Modal {
   state( e ) {
 
     e.preventDefault();
-    this.container.classList.toggle( Configuration.classActive );
+    this.container.classList.toggle( configuration.getClass( 'active' ) );
   }
 
   out( e ) {

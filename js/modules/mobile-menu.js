@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import      configuration from './configuration.js';
 import      Events         from './events.js';
 
 export default class MobileMenu {
@@ -30,13 +30,13 @@ export default class MobileMenu {
 
     open( e ) {
 
-        this.button.classList.add( Configuration.classActive );
-        this.menu.classList.add( Configuration.classActive );
+        this.button.classList.add( configuration.getClass( 'active' ) );
+        this.menu.classList.add( configuration.getClass( 'active' ) );
 
         Events.outside( this.menu, this.events, () => {
 
-            this.button.classList.remove( Configuration.classActive );
-            this.menu.classList.remove( Configuration.classActive );    
+            this.button.classList.remove( configuration.getClass( 'active' ) );
+            this.menu.classList.remove( configuration.getClass( 'active' ) );    
         } );
     }
 

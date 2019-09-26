@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import configuration from './configuration.js';
 
 export default class Accordion {
 
@@ -12,8 +12,8 @@ export default class Accordion {
 
     if ( this.items.length ) {
 
-      this.items[ 0 ].classList.add( Configuration.classActive );
-      this.items[ 0 ].nextElementSibling.classList.add( Configuration.classActive );
+      this.items[ 0 ].classList.add( configuration.getClass( 'active' ) );
+      this.items[ 0 ].nextElementSibling.classList.add( configuration.getClass( 'active' ) );
 
       this.items.forEach( ( item ) => {
 
@@ -30,7 +30,7 @@ export default class Accordion {
 
     const description = item.nextElementSibling;
 
-    item.classList.toggle( Configuration.classActive );
-    description.classList.toggle( Configuration.classActive );
+    item.classList.toggle( configuration.getClass( 'active' ) );
+    description.classList.toggle( configuration.getClass( 'active' ) );
   }  
 }
