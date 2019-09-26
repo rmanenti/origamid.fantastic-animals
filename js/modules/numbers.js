@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import configuration from './configuration.js';
 
 export default class Numbers {
 
@@ -47,7 +47,7 @@ export default class Numbers {
 
   mutation( m ) {
 
-    if ( m[ 0 ].target.classList.contains( Configuration.classActive ) ) {
+    if ( m[ 0 ].target.classList.contains( configuration.getClass( 'active' ) ) ) {
 
       this.observer.disconnect();
       this.animate();

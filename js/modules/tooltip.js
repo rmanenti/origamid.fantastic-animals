@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import configuration from './configuration.js';
 
 export default class Tooltip {
 
@@ -65,7 +65,7 @@ export default class Tooltip {
     const box = document.createElement( 'div' );
     const text = e.getAttribute( 'aria-label' );
 
-    box.classList.add( 'tooltip', Configuration.classActive );
+    box.classList.add( 'tooltip', configuration.getClass( 'active' ) );
     box.innerText = text;
 
     document.body.appendChild( box );

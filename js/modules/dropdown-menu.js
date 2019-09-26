@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import      configuration from './configuration.js';
 import      Events         from './events.js';
 
 export default class DropdownMenu {
@@ -36,10 +36,10 @@ export default class DropdownMenu {
 
     const element = e.currentTarget;
 
-    element.classList.add( Configuration.classActive );
+    element.classList.add( configuration.getClass( 'active' ) );
 
     Events.outside( element, this.events, () => {
-      element.classList.remove( Configuration.classActive );
+      element.classList.remove( configuration.getClass( 'active' ) );
     } );
   }
 

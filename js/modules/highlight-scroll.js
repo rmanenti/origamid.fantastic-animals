@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import      configuration from './configuration.js';
 import      Events         from './events.js';
 
 export default class ScrollHighlight {
@@ -26,7 +26,7 @@ export default class ScrollHighlight {
         this.distances = [...this.sections].map( ( section ) => {
             return {
                 element : section,
-                top     : ( section.offsetTop - Configuration.windowHalfSize ),
+                top     : ( section.offsetTop - configuration.getWindowHalfSize() ),
             };            
         } );
     }
@@ -36,10 +36,10 @@ export default class ScrollHighlight {
         this.distances.forEach( ( section ) => {
 
             if ( window.pageYOffset > section.top ) {
-                section.element.classList.add( Configuration.classActive );
+                section.element.classList.add( configuration.getClass( 'active' ) );
             }
-            else if ( section.element.classList.contains( Configuration.classActive )  ) {
-                section.element.classList.remove( Configuration.classActive );
+            else if ( section.element.classList.contains( configuration.getClass( 'active' ) )  ) {
+                section.element.classList.remove( configuration.getClass( 'active' ) );
             }
         } );
     }

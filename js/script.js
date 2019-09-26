@@ -9,6 +9,7 @@ import      MobileMenu      from './modules/mobile-menu.js';
 import      OpeningHours    from './modules/opening-hours.js';
 import      fetchAnimals    from './modules/fetch-animals.js';
 import      fetchBitcoin    from './modules/fetch-bitcoin.js';
+import      {Slide, NavSlide} from './modules/slide.js';
 
 
 fetchAnimals( '.grid-numbers', './js/api/animals-api.json' );
@@ -40,3 +41,8 @@ accordion.initialize();
 
 const smoothScroll = new SmoothScroll( '[data-ui-component="scroll-menu"] a[href^="#"]' );
 smoothScroll.initialize();
+
+const slide = new NavSlide( 'slide', 'slide-list' );
+slide.initialize();
+slide.create( 'navigation', 'slide-navigation-previous', 'slide-navigation-next' )
+     .create( 'pagination' );

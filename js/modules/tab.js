@@ -1,4 +1,4 @@
-import * as Configuration from './configuration.js';
+import configuration from './configuration.js';
 
 export default class Tab {
 
@@ -14,7 +14,7 @@ export default class Tab {
       this.tabOptions  = this.container.querySelectorAll( 'li' );
       this.tabContent  = document.querySelector( '[data-ui-component="tab-content"]' );
       this.tabSections = this.tabContent.querySelectorAll( 'section' );
-      this.tabSections[ 0 ].classList.add( Configuration.classActive );
+      this.tabSections[ 0 ].classList.add( configuration.getClass( 'active' ) );
 
       this.tabOptions.forEach( ( option, index ) => {
 
@@ -40,10 +40,10 @@ export default class Tab {
   activate( index ) {
 
     this.tabSections.forEach( ( section ) => {
-      section.classList.remove( Configuration.classActive );
+      section.classList.remove( configuration.getClass( 'active' ) );
     } );
 
     const direction = this.tabSections[ index ].dataset.anime;
-    this.tabSections[ index ].classList.add( Configuration.classActive, direction );
+    this.tabSections[ index ].classList.add( configuration.getClass( 'active' ), direction );
   }
 }
